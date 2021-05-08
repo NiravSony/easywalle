@@ -22,14 +22,14 @@ var config = {
     database: 'easy_wallet'
 }
 
-// const pool = new pg.Pool({
-//     connectionString: 'postgres://irbkbumpxrjldy:12b9ad0c2ce2f19b44d5e39158c9bdc1b0623b0ec823caece0344f244943765d@ec2-52-45-73-150.compute-1.amazonaws.com:5432/dakfboq1vqu5uq',
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
+const pool = new pg.Pool({
+    connectionString: 'postgres://jhxrsiuftjvyzh:a298e5fcdd6b814e98bff8dac23c6cc87fff0d5dbca01d8e29af493eb0d71600@ec2-107-22-83-3.compute-1.amazonaws.com:5432/d5j96e57hv4ump',
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
-const pool = new pg.Pool(config);
+// const pool = new pg.Pool(config);
 const PORT = process.env.PORT || 8080;
 
 
