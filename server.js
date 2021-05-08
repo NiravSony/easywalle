@@ -163,7 +163,7 @@ app.post("/api/user/Signup", function (req, res) {
 
                                     let response = {
                                         success: "1",
-                                        message: "Otp is successfully sanded to your mail id.",
+                                        message: "OTP is sent to your given email.",
                                         otp: otp,
                                         UserId: data.rows[0].id
                                     }
@@ -190,7 +190,7 @@ app.post("/api/user/Signup", function (req, res) {
                                         .then(data => {
                                             let response = {
                                                 success: "1",
-                                                message: "Otp is successfully sanded to your mail id.",
+                                                message: "OTP is sent to your given email.",
                                                 otp: otp,
                                                 UserId: data.rows[0].id
                                             }
@@ -294,7 +294,7 @@ app.post("/api/user/Forgotpassword", function (req, res) {
                         send_Password_mail(req.body.Email, randomstring)
                         datas = {
                             success: 1,
-                            message: "Password is successfully sanded to your mail."
+                            message: "Password is sent to your given email."
                         }
                         res.send(datas);
                     })
@@ -384,13 +384,13 @@ app.get("/api/user/GetUserProfile/:UserId", function (req, res) {
                     message: "",
                     data: {
                         id: data.rows[0].id,
-                        first_name: data.rows[0].first_name,
-                        last_name: data.rows[0].last_name,
-                        email: data.rows[0].email,
-                        mobile: data.rows[0].mobile,
-                        password: data.rows[0].password,
-                        profile_image: data.rows[0].profile_image,
-                        verified: data.rows[0].verified,
+                        FirstName: data.rows[0].first_name,
+                        LastName: data.rows[0].last_name,
+                        Email: data.rows[0].email,
+                        Mobile: data.rows[0].mobile,
+                        Password: data.rows[0].password,
+                        ProfileImage: data.rows[0].profile_image
+                        // verified: data.rows[0].verified,
                     }
                 }
                 res.send(datas);
