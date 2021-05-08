@@ -157,14 +157,15 @@ app.post("/api/user/Signup", function (req, res) {
 
                         if (data.rows.length > 0) {
                             pool.query('UPDATE users SET first_name = $1, last_name = $2, email = $3, mobile = $4, otp = $5, password = $6, verified = $7, create_date = NOW() WHERE email = $3 ', values)
-                                .then(data => {
+                                .then(datas => {
 
                                     sendmail(req.body.Email, otp)
 
                                     let response = {
                                         success: "1",
-                                        message: "Otp is successfully sanded to your mail.",
+                                        message: "Otp is successfully sanded to your mail id.",
                                         otp: otp,
+                                        UserId: data.rows[0].id
                                     }
 
                                     res.send(response);
@@ -181,14 +182,15 @@ app.post("/api/user/Signup", function (req, res) {
                         else {
 
                             pool.query('INSERT INTO users(first_name, last_name, email, mobile, otp, password, verified, create_date) VALUES($1, $2, $3, $4, $5, $6, $7, NOW())', values)
-                                .then(data => {
+                                .then(datas => {
 
                                     sendmail(req.body.Email, otp)
 
                                     let response = {
                                         success: "1",
-                                        message: "Otp is successfully sanded to your mail.",
+                                        message: "Otp is successfully sanded to your mail id.",
                                         otp: otp,
+                                        UserId: data.rows[0].id
                                     }
 
                                     res.send(response);
