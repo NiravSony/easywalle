@@ -134,6 +134,10 @@ app.post("/api/user/Signup", function (req, res) {
 
     let otp = Math.floor(Math.random() * 10000) + 1;
 
+    if(otp.length < 4){
+        otp + "0";
+    }
+
     const values = [req.body.FirstName, req.body.LastName, req.body.Email, req.body.Mobile, otp, req.body.Password, 0];
 
     pool.query('SELECT * FROM users WHERE email = $1 and verified = $2', [req.body.Email, 1])
@@ -666,7 +670,7 @@ function sendmail(mail, message) {
         from: 'rajiv.joshi2018@gmail.com',
         to: mail,
         subject: 'Easy Wallet',
-        text: `You otp to validate Easy Wallet is ${message}. `
+        text: `Your otp to validate Easy Wallet is ${message}. `
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
