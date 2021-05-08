@@ -655,7 +655,7 @@ function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        service: 'gmail',
+        service: "Gmail",
         auth: {
             user: 'rajiv.joshi2018@gmail.com',
             pass: 'ldo3Nui$5buh43g@fi4'
