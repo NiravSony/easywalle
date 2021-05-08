@@ -134,7 +134,7 @@ app.post("/api/user/Signup", function (req, res) {
 
     let otp = Math.floor(Math.random() * 10000) + 1;
 
-    if(otp.length < 4){
+    if (otp.length < 4) {
         otp + "0";
     }
 
@@ -186,14 +186,26 @@ app.post("/api/user/Signup", function (req, res) {
 
                                     sendmail(req.body.Email, otp)
 
-                                    let response = {
-                                        success: "1",
-                                        message: "Otp is successfully sanded to your mail id.",
-                                        otp: otp,
-                                        UserId: data.rows[0].id
-                                    }
+                                    pool.query('SELECT * FROM users WHERE email = $1', [req.body.Email])
+                                        .then(data => {
+                                            let response = {
+                                                success: "1",
+                                                message: "Otp is successfully sanded to your mail id.",
+                                                otp: otp,
+                                                UserId: data.rows[0].id
+                                            }
 
-                                    res.send(response);
+                                            res.send(response);
+                                        })
+                                        .catch(e => {
+
+                                            let response = {
+                                                success: 0,
+                                                message: e.message,
+                                            }
+                                            res.send(response);
+                                        });
+
                                 })
                                 .catch(e => {
 
