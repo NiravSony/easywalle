@@ -97,7 +97,7 @@ app.post("/api/user/Login", function (req, res) {
                         else {
                             datas = {
                                 success: 0,
-                                message: "Wrong credentials, Try again!",
+                                message: "Wrong password, Try again!",
                             }
                             res.send(datas);
                         }
