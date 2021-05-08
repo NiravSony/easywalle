@@ -1,0 +1,134 @@
+.calcualate-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calcualate-container .calculate-box{
+  background: #FFFFFF;
+border: 1px solid #EEF2F7;
+box-sizing: border-box;
+box-shadow: 0px 2px 20px 4px rgba(230, 235, 240, 0.25);
+border-radius: 5px;
+width: 388px;
+padding: 45px 30px 30px 30px;
+margin-top: 30px;
+}
+.css-2613qy-menu{
+  background-color: tomato;
+}
+.calcualate-container .css-yk16xz-control,
+.calcualate-container .css-1pahdxg-control{
+  background: #FFFFFF;
+  border: 1px solid #EBF0F7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 60px;
+  caret-color: transparent;
+}
+.calcualate-container .css-1pahdxg-control .css-1gtu0rj-indicatorContainer,
+.calcualate-container .css-yk16xz-control .css-tlfecz-indicatorContainer{
+  position: relative;
+}
+.calcualate-container .css-1pahdxg-control .css-1gtu0rj-indicatorContainer::after,
+.calcualate-container .css-yk16xz-control .css-tlfecz-indicatorContainer::after{
+  content: '';
+  position: absolute;
+  height:5px;
+  width: 5px;
+  background-color: transparent;
+  border: 5px solid #14283D;
+  border-left: 5px solid transparent;
+  border-top: 5px solid transparent;
+  top: 40%;
+  left: -20%;
+  transform:translate(-50%, -50%) rotate(45deg);
+}
+.calcualate-container .css-1pahdxg-control .css-tj5bde-Svg,
+.calcualate-container .css-yk16xz-control .css-tj5bde-Svg{
+  display: none;
+}
+.calcualate-container .calculate-box .css-1okebmr-indicatorSeparator{
+  display: none !important;
+}
+
+.calcualate-container .calculate-box .select-type{
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 30px 0 10px 0;
+}
+.calcualate-container .calculate-box .select-type span{
+  color: #BAC7D1;
+  margin-left: 5px;
+}
+.calcualate-container .calculate-box .select-type span.active{
+  color:  #14283D !important;
+}
+.calcualate-container .calculate-box input{
+  background: #FFFFFF;
+  border: 1px solid #EBF0F7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  padding: 20px;
+}
+.calcualate-container .calculate-box .summary{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0 15px 0;
+  margin: 0;
+}
+.calcualate-container .calculate-box .price{
+  display: flex;
+  justify-content: space-between;
+}
+.calcualate-container .calculate-box .price .title{
+  margin: 0;
+  font-size: 16px;
+  line-height: 19px;
+  padding-bottom: 10px;
+}
+.calcualate-container .calculate-box .price .count{
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0;
+}
+.calcualate-container .calculate-box .yougot{
+  display: flex;
+  justify-content: space-between;
+}
+.calcualate-container .calculate-box .yougot .title{
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.calcualate-container .calculate-box .yougot .title img{
+  width: 13px;
+  margin-top: 3px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.calcualate-container .calculate-box .yougot .count{
+  margin: 0;
+}
+.calcualate-container .calculate-box button{
+  background: #3787FF;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #FFFFFF;
+  border: 0;
+  width: 100%;
+  padding: 15px;
+  margin-top: 50px;
+}

@@ -1,0 +1,168 @@
+
+.transaction-container{
+    display: flex;
+}
+.transaction-main{
+    width: 100%;
+    padding-right: 20px;
+}
+.transaction-main .tran-filter-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.transaction-main .tran-filter-btn span{
+    height: 50px;
+    display: block;
+    cursor: pointer;
+    background: #F3F5F8;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.transaction-main .tran-filter-btn span img{
+    width: 17px;
+    margin-right: 5px;
+}
+
+.transaction-main .tran-his-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #EEF2F7;
+}
+.transaction-main .tran-his-row .tran-his-row-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33.33%;
+}
+.transaction-main .tran-his-row .tran-his-row-center{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33.33%;
+    padding-left: 120px;
+}
+.transaction-main .tran-his-row .tran-his-row-left .send-receive{
+    width: 12px;
+}
+.transaction-main .tran-his-row .tran-his-row-left .trans-curr-img{
+    width: 32px;
+    margin: 0 10px;
+}
+.transaction-main .tran-his-row .tran-his-row-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 33.33%;
+}
+.transaction-main .tran-his-row .tran-his-row-left p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+}
+.transaction-main .tran-his-row .tran-his-row-center p{
+    font-size: 12px;
+    line-height: 14px;
+    margin: 0;
+}
+.transaction-main .tran-his-row .tran-his-row-center .send-his{
+    color: #E0654A;
+}
+.transaction-main .tran-his-row .tran-his-row-center .receive-his{
+    color: #4AE074;
+}
+.transaction-main .tran-his-row .tran-his-row-right p,
+.transaction-main .tran-his-row .tran-his-row-right p{
+    font-size: 12px;
+    line-height: 14px;
+    color: #BAC7D1;
+    margin: 0;
+}
+.transaction-right{
+    width: 300px;
+    height: 100%;
+    padding-left: 20px;
+    border-left: 1px solid #EEF2F6;
+}
+.transaction-right .trans-heading p{
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 45px 0 17px 0;
+}
+.transaction-right .trans-curr-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid #EEF2F7;
+    box-shadow: 0px 2px 5px rgba(238, 242, 246, 0.5);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.transaction-right .trans-curr-box .trans-curr-box-left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.transaction-right .trans-curr-box .trans-curr-box-left .title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.transaction-right .trans-curr-box .trans-curr-box-left img{
+    width: 36px;
+    margin-right: 14px;
+}
+.transaction-right .trans-curr-box .trans-curr-box-left p{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.transaction-right .trans-curr-box .trans-curr-box-left span{
+    font-size: 12px;
+    line-height: 18px;
+    color: #BAC7D1;
+    text-transform: capitalize;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right p{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right span{
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 12px;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right span img{
+    width: 8px;
+    margin-right: 5px;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right .up{
+    color: #4AE074;
+}
+.transaction-right .trans-curr-box .trans-curr-box-right .down{
+    color: #E0654A;
+}

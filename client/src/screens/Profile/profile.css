@@ -1,0 +1,316 @@
+.profile-container{
+    padding: 10px 30px;
+}
+.profile-container .top-navigation .top-nav-left a img{
+    width: 80px;
+    margin-right: 10px;
+}
+.profile-container .top-navigation .top-nav-left a{
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    color: #3787FF;
+    text-decoration: none;
+}
+.profile-inner-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-inner-container .back{
+    display: flex;
+    width: 498px;
+    text-align: left;
+    padding: 20px;
+}
+.profile-inner-container a{
+    display: block;
+    font-size: 16px;
+    line-height: 19px;
+    color: #14283D;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    text-align: left;
+}
+.profile-inner-container a img{
+    transform: rotate(180deg);
+    width: 16px;
+    margin-right: 10px;
+}
+.profile-inner-container .profile-box{
+    background: #FFFFFF;
+    border: 1px solid #EEF2F7;
+    box-shadow: 0px 2px 20px 4px rgba(230, 235, 240, 0.25);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 498px;
+    padding: 50px;
+    text-align: center !important;
+}
+.profile-inner-container .profile-box img{
+    width: 128px;
+}
+.profile-inner-container .profile-box h4{
+    font-size: 20px;
+    line-height: 23px;
+    padding: 25px 0 8px 0;
+}
+.profile-inner-container .profile-box .number{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.profile-inner-container .profile-box .number p{
+    font-size: 10px;
+    line-height: 12px;
+    background: #EFF3FA;
+    border-radius: 10px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+.profile-inner-container .profile-box input{
+    font-size: 16px;
+    background: #F4F7FB;
+    border: 1px solid #CFD7E3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    height: 60px;
+    padding-left: 45px;
+}
+.profile-inner-container .profile-box input{
+    background-repeat: no-repeat;
+    background-position: 15px 50%;
+    background-size:20px ;
+}
+.profile-inner-container input[type="text"]{
+    background-image: url('../../images/profile_icon.png');
+    background-size: 16px;
+}
+.profile-inner-container .profile-box input[type="email"]{
+    background-image: url('../../images/Message.png');
+}
+.profile-inner-container .profile-box input[type="password"]{
+    background-image: url('../../images/Password.png');
+}
+.profile-inner-container .profile-box .MuiFormLabel-root.Mui-disabled {
+    color: #B7C4D2;
+    background: #ffffff;
+    margin-left: 40px;
+    padding: 1px 10px;
+    z-index: 2;
+}
+.profile-inner-container .profile-box .MuiFormLabel-root {
+    color: #3787FF;
+    background: #ffffff;
+    margin-left: 40px;
+    padding: 1px 10px;
+    z-index: 2;
+}
+.profile-inner-container .profile-box .name{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.profile-inner-container .profile-box .name .MuiFormControl-root{
+    width: 48%;
+}
+.profile-inner-container .profile-box .MuiFormControl-root{
+    width: 100%;
+    margin-bottom: 25px;
+}
+.profile-inner-container .profile-box .submit{
+    width: 100%;
+    position: relative;
+}
+.profile-inner-container .profile-box input[type="submit"]{
+    background: #B7C4D2;
+    background-image: url('../../images/edit_icon.png');
+    background-position: 43% 50%;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    width: 100%;
+    border: 0;
+    height: 60px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    padding: 0;
+}
+
+.profileedit-inner-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.profileedit-inner-container .back{
+    display: flex;
+    width: 498px;
+    text-align: left;
+    padding: 20px;
+}
+.profileedit-inner-container a{
+    display: block;
+    font-size: 16px;
+    line-height: 19px;
+    color: #14283D;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    text-align: left;
+}
+.profileedit-inner-container a img{
+    transform: rotate(180deg);
+    width: 16px;
+    margin-right: 10px;
+}
+.profileedit-inner-container .profile-box{
+    background: #FFFFFF;
+    border: 1px solid #EEF2F7;
+    box-shadow: 0px 2px 20px 4px rgba(230, 235, 240, 0.25);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 498px;
+    padding: 50px;
+    text-align: center !important;
+}
+.profileedit-inner-container .profile-box .profileimg{
+    position: relative;
+}
+.profileedit-inner-container .profile-box .profileimg .editimg{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background: #F2F6FC;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -5px;
+    right: 35%;
+    cursor:pointer;
+}
+.profileedit-inner-container .profile-box .profileimg .editimg img{
+    width: 22px;
+}
+.profileedit-inner-container .profile-box img{
+    width: 128px;
+}
+.profileedit-inner-container .profile-box h4{
+    font-size: 20px;
+    line-height: 23px;
+    padding: 25px 0 8px 0;
+}
+.profileedit-inner-container .profile-box .number{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.profileedit-inner-container .profile-box .number p{
+    font-size: 10px;
+    line-height: 12px;
+    background: #EFF3FA;
+    border-radius: 10px;
+    padding: 3px 10px;
+    width: fit-content;
+}
+.profileedit-inner-container .profile-box input{
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    height: 60px;
+    padding-left: 45px;
+}
+.profileedit-inner-container .profile-box input{
+    background-repeat: no-repeat;
+    background-position: 15px 50%;
+    background-size:20px ;
+}
+.profileedit-inner-container .profile-box .MuiOutlinedInput-root{
+    height: 60px;
+}
+.profileedit-inner-container input[type="text"]{
+    background-image: url('../../images/profile_icon.png');
+    background-size: 16px;
+}
+.profileedit-inner-container .profile-box input[type="email"]{
+    background-image: url('../../images/Message.png');
+}
+.profileedit-inner-container .profile-box input[type="password"]{
+    background-image: url('../../images/Password.png');
+}
+.profileedit-inner-container .profile-box .MuiFormLabel-root {
+    background: #ffffff;
+    margin-left: 25px;
+    padding: 2px 10px;
+    z-index: 2;
+}
+.profileedit-inner-container .MuiInputLabel-outlined.MuiInputLabel-shrink{
+    transform: translate(30px, -6px) scale(0.75);
+}
+.profileedit-inner-container .profile-box .name{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.profileedit-inner-container .profile-box .name .MuiFormControl-root{
+    width: 48%;
+}
+.profileedit-inner-container .profile-box .MuiFormControl-root{
+    width: 100%;
+    margin-bottom: 25px;
+}
+.profileedit-inner-container .profile-box .MuiFormControl-root .PrivateNotchedOutline-legendNotched-4{
+    background-color: transparent;
+    width: 0;
+}
+.profileedit-inner-container .profile-box .submit{
+    width: 100%;
+    position: relative;
+}
+.profileedit-inner-container .profile-box input[type="submit"]{
+    background: #3787FF;
+    border-radius: 10px;
+    background-position: 43% 50%;
+    width: 100%;
+    border: 0;
+    height: 60px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    padding: 0;
+    text-align: center;
+}
+.profileedit-inner-container .profile-box input[type="button"] {
+    color: #3787FF;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 0;
+    background-color: transparent;
+}

@@ -1,0 +1,291 @@
+*{
+  box-sizing: border-box;
+margin:0;
+padding: 0
+}
+.Logo {
+    width: 60px;
+    height: 60px;
+    margin-top: 40px;
+  }
+
+.icon {
+    width: 21px;
+    height: 21px;
+    margin-left: 20px;
+  }
+  .dashboard-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
+  .dashboard-container .main{
+    width: 100%;
+    padding-right: 20px;
+    border-right: 1px solid rgb(243, 243, 243);
+
+  }
+  .dashboard-container .main .hello{
+    background: linear-gradient(to right, #ff6b6d, #e6a4fe);
+    border-radius: 15px;
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  .dashboard-container .main .hello .text{
+    width: 95%;
+    padding: 30px 30px 43px;
+  }
+  .dashboard-container .main .hello .text h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 100%;
+    color: #fff;
+    margin: 0px;
+  }
+  .dashboard-container .main .hello .text p{
+    font-size: 18px;
+    font-weight: normal;
+    color: #fff;
+    letter-spacing: 0.5px;
+    padding: 10px 0 29px 0;
+    margin: 0;
+  }
+  .dashboard-container .main .hello .text .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboard-container .main .hello .text .search img{
+    background: #fff;
+    height: 45px;
+    padding: 14px;
+    border-radius: 7px 0px 0px 7px;
+
+  }
+  .dashboard-container .main .hello .text .search input{
+    height: 45px;
+    width: 100%;
+    padding: 10px;
+    padding-left: 0px;
+    margin-left: -1px;
+    border: 0px;
+    border-radius: 0px 7px 7px 0px;
+  }
+  .dashboard-container .main .hello .text .search input::placeholder{
+    color: #a3a3a3;
+  }
+
+  .dashboard-container .main .hello .image{
+    width: 40%;
+    position: relative;
+    overflow: hidden;
+  }
+  .dashboard-container .main .hello .image img{
+    width: 85%;
+    position: absolute;
+    right: 0px;
+    left: 15px;
+    bottom: 0;
+  }
+  .pop-curr{
+    display: 100%;
+  }
+  .pop-curr .heading{
+    padding: 30px 0 20px 0;
+  }
+  .pop-curr .heading h4{
+    margin: 0;
+    font-size: 22px;
+  }
+  .pop-curr .pop-curr-main{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .dashboard-container .recent-activity{
+    width: 300px;
+    background-color: #fff;
+    height: 100vh;
+    padding-left:20px;
+  }
+.recent-activity-history{
+  padding: 0px 0;
+}
+.recent-activity-history .heading h4{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  padding: 42px 0 32px 0;
+}
+
+.recent-activity .view-all-btn{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  background: #e7f0ff;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+  color: #3787ff;
+  font-size: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+  display: block;
+}
+.recent-activity .view-all-btn img{
+  width: 18px;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+.recent-activity .view-all-btn:hover{
+  background: #dbe8ff;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+.recent-activity .view-all-btn:hover span img{
+  width: 20px;
+}
+.dashboard-container .main .charttop{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard-container .main .charttop .left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard-container .main .charttop .left img{
+  width: 48px;
+  margin-right: 20px;
+}
+.dashboard-container .main .charttop .left .left-inner p{
+  margin: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #BAC7D1;
+
+}
+.dashboard-container .main .charttop .left .left-inner div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-container .main .charttop .left .left-inner div h5{
+  font-size: 20px;
+  line-height: 23px;
+  padding-top: 6px;
+  margin: 0;
+}
+.dashboard-container .main .charttop .left .left-inner div{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.dashboard-container .main .charttop .left .left-inner div span{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  padding: 4px 8px 5px 20px;
+  line-height: 12px;
+  margin-left: 10px;
+}
+.dashboard-container .main .charttop .left .left-inner div .green{
+  background: #EAFFF0;
+  background-image: url('../../images/uparrow.png');
+  background-position: 7% 49%;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  color: #4AE074;
+  border-radius: 5px;
+}
+.dashboard-container .main .charttop .left .left-inner div .red{
+  background: #ffece8;
+  background-image: url('../../images/downarrow.png');
+  background-position: 8% 50%;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  color: #E0654A;
+  border-radius: 5px;
+}
+.dashboard-container .main .charttop .right{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard-container .main .charttop .right p{
+  margin: 0;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  margin-right: 12px;
+}
+.react-switch{
+  margin: 5px 10px 0 0;
+}
+.dashboard-container .main .charttop .right .react-switch-handle{
+  width: 15px !important;
+  height: 15px !important;
+  left: -2px;
+}
+.dashboard-container .main .charttop .right .react-switch-bg{
+  width: 21px !important;
+  height: 10px !important;
+  margin-top: 3px !important;
+  background-color: #C4C4C4 !important;
+
+}
+ button{
+  border-radius: 10px;
+  border: 0px;
+  padding: 0px 70px 0px 90px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  margin-right: 0px;
+  background: #3787FF;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 37% 50%;
+  background-image: url('../../images/cart.png');
+}
+
+.recent-activity .details{
+  border-bottom: 1px solid #EEF2F7;
+  padding: 15px 0;
+}
+.recent-activity .details .title{
+  font-size: 14px;
+  line-height: 16px;
+  color: #BAC7D1;
+  margin: 0;
+  padding-bottom: 3px;
+}
+.recent-activity .details .content{
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0;
+}
+.recent-activity .viewon {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  text-decoration: none;
+  color: #000;
+  line-height: 45px;
+}
+.recent-activity .viewon img{
+  width: 10px;
+  margin-top: -8px;
+  margin-left: 5px;
+}
