@@ -654,6 +654,7 @@ app.post('/api/payment', function (req, res) {
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
         service: 'gmail',
         auth: {
             user: 'rajiv.joshi2018@gmail.com',
