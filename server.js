@@ -678,8 +678,8 @@ function sendmail(mail, message) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'nirav@vidhaninfotech.com', // generated ethereal user
-            pass: 'Password@444'  // generated ethereal password
+            user: 'noreply@vidhaninfotech.com', // generated ethereal user
+            pass: '47@mg7J5G4BcU'  // generated ethereal password
         },
         tls:{
           rejectUnauthorized:false
@@ -716,8 +716,8 @@ function send_Password_mail(mail, message) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'nirav@vidhaninfotech.com', // generated ethereal user
-            pass: 'Password@444'  // generated ethereal password
+            user: 'noreply@vidhaninfotech.com', // generated ethereal user
+            pass: '47@mg7J5G4BcU'  // generated ethereal password
         },
         tls:{
           rejectUnauthorized:false
