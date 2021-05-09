@@ -675,13 +675,13 @@ function sendmail(mail, message) {
         host: "smtp.gmail.com",
         service: "Gmail",
         auth: {
-            user: 'rajiv.joshi2018@gmail.com',
-            pass: 'ldo3Nui$5buh43g@fi4'
+            user: 'rajppatel7919@gmail.com',
+            pass: 'raj9@.com'
         }
     });
 
     var mailOptions = {
-        from: 'rajiv.joshi2018@gmail.com',
+        from: 'rajppatel7919@gmail.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your otp to validate Easy Wallet is ${message}. `
@@ -702,13 +702,13 @@ function send_Password_mail(mail, message) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'rajiv.joshi2018@gmail.com',
-            pass: 'ldo3Nui$5buh43g@fi4'
+            user: 'rajppatel7919@gmail.com',
+            pass: 'raj9@.com'
         }
     });
 
     var mailOptions = {
-        from: 'rajiv.joshi2018@gmail.com',
+        from: 'rajppatel7919@gmail.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your Easy Wallet new password is ${message}. `
