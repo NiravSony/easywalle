@@ -684,7 +684,7 @@ function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport(mandrillTransport({
         auth: {
-          apiKey : 'j1_ib1-0RBmJjcHYPw0Igg'
+          apiKey : 'cZ4cj4r0pAuLFa3V3MuR-Q'
         }
     }));
 
@@ -718,7 +718,7 @@ function send_Password_mail(mail, message) {
 
     var transporter = nodemailer.createTransport(mandrillTransport({
         auth: {
-          apiKey : 'j1_ib1-0RBmJjcHYPw0Igg'
+          apiKey : 'cZ4cj4r0pAuLFa3V3MuR-Q'
         }
     }));
 
