@@ -542,7 +542,7 @@ app.post('/api/user/UploadImage', function (req, res) {
         .then(data => {
 
             if (data.rows.length > 0) {
-
+                
                 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
                 sampleFile = req.files.ProfileImage;
                 uploadPath = __dirname + `/images/profile/${parseInt(req.body.UserId)}.jpg`;
@@ -733,7 +733,7 @@ function send_Password_mail(mail, message) {
         if (error) {
             console.log("error == ", error);
         } else {
-            console.log('Email sent: ' + info.response);
+            console.log('Email sent: ' + info);
         }
     });
 
