@@ -674,7 +674,7 @@ app.post('/api/payment', function (req, res) {
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
-        host: 'mail.gmail.com',
+        // host: 'mail.gmail.com',
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
@@ -712,7 +712,7 @@ function sendmail(mail, message) {
 function send_Password_mail(mail, message) {
 
     var transporter = nodemailer.createTransport({
-        host: 'mail.gmail.com',
+        // host: 'mail.gmail.com',
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
