@@ -733,7 +733,7 @@ function send_Password_mail(mail, message) {
         if (error) {
             console.log("error == ", error);
         } else {
-            console.log('Email sent: ' + info);
+            console.log('Email sent: ' + JSON.stringify(info));
         }
     });
 
