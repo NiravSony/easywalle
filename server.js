@@ -673,20 +673,20 @@ app.post('/api/payment', function (req, res) {
 
 function sendmail(mail, message) {
 
-    // var transporter = nodemailer.createTransport({
-    //     host: "smtp.gmail.com",
-    //     service: "Gmail",
-    //     auth: {
-    //         user: 'rajiv.joshi2018@gmail.com',
-    //         pass: 'ldo3Nui$5buh43g@fi4'
-    //     }
-    // });
-
-    var transporter = nodemailer.createTransport(mandrillTransport({
+    var transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        service: "Gmail",
         auth: {
-          apiKey : 'cZ4cj4r0pAuLFa3V3MuR-Q'
+            user: 'rajiv.joshi2018@gmail.com',
+            pass: 'ldo3Nui$5buh43g@fi4'
         }
-    }));
+    });
+
+    // var transporter = nodemailer.createTransport(mandrillTransport({
+    //     auth: {
+    //       apiKey : 'cZ4cj4r0pAuLFa3V3MuR-Q'
+    //     }
+    // }));
 
     var mailOptions = {
         from: 'rajiv.joshi2018@gmail.com',
@@ -707,20 +707,20 @@ function sendmail(mail, message) {
 
 function send_Password_mail(mail, message) {
 
-    // var transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: 'rajiv.joshi2018@gmail.com',
-    //         pass: 'ldo3Nui$5buh43g@fi4'
-    //     }
-    // });
-
-
-    var transporter = nodemailer.createTransport(mandrillTransport({
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
         auth: {
-          apiKey : 'cZ4cj4r0pAuLFa3V3MuR-Q'
+            user: 'rajiv.joshi2018@gmail.com',
+            pass: 'ldo3Nui$5buh43g@fi4'
         }
-    }));
+    });
+
+
+    // var transporter = nodemailer.createTransport(mandrillTransport({
+    //     auth: {
+    //       apiKey : 'j1_ib1-0RBmJjcHYPw0Igg'
+    //     }
+    // }));
 
     var mailOptions = {
         from: 'rajiv.joshi2018@gmail.com',
