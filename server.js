@@ -12,6 +12,8 @@ const app = express();
 
 var nodemailer = require('nodemailer');
 
+var mandrillTransport = require('nodemailer-mandrill-transport');
+
 var http = require('http');
 
 const pg = require('pg');
@@ -671,17 +673,23 @@ app.post('/api/payment', function (req, res) {
 
 function sendmail(mail, message) {
 
-    var transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        service: "Gmail",
+    // var transporter = nodemailer.createTransport({
+    //     host: "smtp.gmail.com",
+    //     service: "Gmail",
+    //     auth: {
+    //         user: 'rajiv.joshi2018@gmail.com',
+    //         pass: 'ldo3Nui$5buh43g@fi4'
+    //     }
+    // });
+
+    var transporter = nodemailer.createTransport(mandrillTransport({
         auth: {
-            user: 'rajppatel7919@gmail.com',
-            pass: 'raj9@.com'
+          apiKey : 'ae5aadb6e01814875cc7538993936ccd-us1'
         }
-    });
+    }));
 
     var mailOptions = {
-        from: 'rajppatel7919@gmail.com',
+        from: 'rajiv.joshi2018@gmail.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your otp to validate Easy Wallet is ${message}. `
@@ -699,16 +707,23 @@ function sendmail(mail, message) {
 
 function send_Password_mail(mail, message) {
 
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
+    // var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: 'rajiv.joshi2018@gmail.com',
+    //         pass: 'ldo3Nui$5buh43g@fi4'
+    //     }
+    // });
+
+
+    var transporter = nodemailer.createTransport(mandrillTransport({
         auth: {
-            user: 'rajppatel7919@gmail.com',
-            pass: 'raj9@.com'
+          apiKey : 'ae5aadb6e01814875cc7538993936ccd-us1'
         }
-    });
+    }));
 
     var mailOptions = {
-        from: 'rajppatel7919@gmail.com',
+        from: 'rajiv.joshi2018@gmail.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your Easy Wallet new password is ${message}. `
