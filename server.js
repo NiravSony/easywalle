@@ -693,7 +693,7 @@ function sendmail(mail, message) {
     // }));
 
     var mailOptions = {
-        from: 'nirav@vidhaninfotech.com',
+        from: 'noreply@vidhaninfotech.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your otp to validate Easy Wallet is ${message}. `
@@ -732,7 +732,7 @@ function send_Password_mail(mail, message) {
     // }));
 
     var mailOptions = {
-        from: 'nirav@vidhaninfotech.com',
+        from: 'noreply@vidhaninfotech.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your Easy Wallet new password is ${message}. `
