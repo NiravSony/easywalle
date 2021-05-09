@@ -674,11 +674,15 @@ app.post('/api/payment', function (req, res) {
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        service: "Gmail",
+        host: 'mail.vidhaninfotech.com',
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-            user: 'rajiv.joshi2018@gmail.com',
-            pass: 'ldo3Nui$5buh43g@fi4'
+            user: 'nirav@vidhaninfotech.com', // generated ethereal user
+            pass: 'Password@444'  // generated ethereal password
+        },
+        tls:{
+          rejectUnauthorized:false
         }
     });
 
@@ -689,7 +693,7 @@ function sendmail(mail, message) {
     // }));
 
     var mailOptions = {
-        from: 'rajiv.joshi2018@gmail.com',
+        from: 'nirav@vidhaninfotech.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your otp to validate Easy Wallet is ${message}. `
@@ -708,10 +712,15 @@ function sendmail(mail, message) {
 function send_Password_mail(mail, message) {
 
     var transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'mail.vidhaninfotech.com',
+        port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-            user: 'rajiv.joshi2018@gmail.com',
-            pass: 'ldo3Nui$5buh43g@fi4'
+            user: 'nirav@vidhaninfotech.com', // generated ethereal user
+            pass: 'Password@444'  // generated ethereal password
+        },
+        tls:{
+          rejectUnauthorized:false
         }
     });
 
@@ -723,7 +732,7 @@ function send_Password_mail(mail, message) {
     // }));
 
     var mailOptions = {
-        from: 'rajiv.joshi2018@gmail.com',
+        from: 'nirav@vidhaninfotech.com',
         to: mail,
         subject: 'Easy Wallet',
         text: `Your Easy Wallet new password is ${message}. `
