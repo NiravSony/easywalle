@@ -134,11 +134,7 @@ app.post("/api/user/Login", function (req, res) {
 
 app.post("/api/user/Signup", function (req, res) {
 
-    let otp = Math.floor(Math.random() * 10000) + 1;
-
-    if (otp.length < 4) {
-        otp + "0";
-    }
+    let otp = Math.floor(1000 + Math.random() * 9000);
 
     const values = [req.body.FirstName, req.body.LastName, req.body.Email, req.body.Mobile, otp, req.body.Password, 0];
 
@@ -542,7 +538,7 @@ app.post('/api/user/UploadImage', function (req, res) {
         .then(data => {
 
             if (data.rows.length > 0) {
-                
+
                 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
                 sampleFile = req.files.ProfileImage;
                 uploadPath = __dirname + `/images/profile/${parseInt(req.body.UserId)}.jpg`;
@@ -681,8 +677,8 @@ function sendmail(mail, message) {
             user: 'noreply@vidhaninfotech.com', // generated ethereal user
             pass: '47@mg7J5G4BcU'  // generated ethereal password
         },
-        tls:{
-          rejectUnauthorized:false
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
@@ -719,8 +715,8 @@ function send_Password_mail(mail, message) {
             user: 'noreply@vidhaninfotech.com', // generated ethereal user
             pass: '47@mg7J5G4BcU'  // generated ethereal password
         },
-        tls:{
-          rejectUnauthorized:false
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
