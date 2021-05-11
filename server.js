@@ -731,7 +731,7 @@ function send_Password_mail(mail, message) {
         from: 'noreply@vidhaninfotech.com',
         to: mail,
         subject: 'Easy Wallet',
-        text: `Your Easy Wallet new password is ${message}. `
+        text: `Your Easy Wallet new password is ${message} `
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
