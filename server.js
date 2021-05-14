@@ -626,16 +626,69 @@ app.post('/api/payment', function (req, res) {
                         receipt_email: req.body.Email
                     })
                         .then((charge) => {
-                            res.send(charge)  // If no error occurs
+                            // res.json(charge)  // If no error occurs
+
+                            if (charge.status == "succeeded") {
+
+                                let amount = parseInt(req.body.Amount) / 100;
+
+                                pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, amount, transaction_type, ispaid, created_by, created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, NOW())', [req.body.UserId, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, amount, "Buy", 1, req.body.UserId])
+                                    .then(datas => {
+
+                                        let response = {
+                                            success: "1",
+                                            message: "Successfully payment done.",
+                                        }
+                                        res.send(response);
+
+                                    })
+                                    .catch(e => {
+
+                                        let response = {
+                                            success: "0",
+                                            message: e.message,
+                                        }
+                                        res.send(response);
+                                    });
+                            }
+                            else {
+
+                            }
+
+                        })
+                        .catch((err) => {
+                            // res.send(err)       // If some error occurs
+
+                            let data = {
+                                success: "0",
+                                message: err.raw.message
+                            }
+
+                            res.json(data)
                         });
+
                 })
                 .catch((err) => {
-                    res.send(err)       // If some error occurs
+                    // res.send(err)       // If some error occurs
+
+                    let data = {
+                        success: "0",
+                        message: err.raw.message
+                    }
+
+                    res.json(data)
                 });
 
         })
         .catch((err) => {
-            res.send(err)       // If some error occurs
+            // res.send(err)       // If some error occurs
+
+            let data = {
+                success: "0",
+                message: err.raw.message
+            }
+
+            res.json(data)
         });
 
     // stripe.customers.create({
