@@ -620,7 +620,7 @@ app.post('/api/payment', function (req, res) {
                 .then((customer) => {
 
                     stripe.charges.create({
-                        amount: req.body.Amount,     // Charing Rs 25
+                        amount: req.body.Amount,    
                         currency: 'INR',
                         customer: customer.id,
                         receipt_email: req.body.Email
@@ -633,13 +633,64 @@ app.post('/api/payment', function (req, res) {
                                 let amount = parseInt(req.body.Amount) / 100;
 
                                 pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, amount, transaction_type, ispaid, created_by, created_on) VALUES($1, $2, $3, $4, $5, $6, $7, $8, NOW())', [req.body.UserId, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, amount, "Buy", 1, req.body.UserId])
-                                    .then(datas => {
+                                    .then(transaction => {
 
-                                        let response = {
-                                            success: "1",
-                                            message: "Successfully payment done.",
-                                        }
-                                        res.send(response);
+                                        pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 and currency_id = $3', [req.body.UserId, 1, req.body.CurrencyId])
+                                            .then(wallet => {
+
+                                                if (wallet.rows.length > 0) {
+
+                                                    let amount = parseFloat(wallet.rows[0].currency_amount) + parseFloat(req.body.CurrencyAmount)
+
+                                                    pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $2 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId])
+                                                        .then(wallet => {
+
+                                                            let response = {
+                                                                success: "1",
+                                                                message: "Successfully payment done.",
+                                                            }
+                                                            res.send(response);
+
+                                                        })
+                                                        .catch(e => {
+
+                                                            let response = {
+                                                                success: "0",
+                                                                message: e.message,
+                                                            }
+                                                            res.send(response);
+                                                        });
+
+                                                }
+                                                else {
+                                                    pool.query('INSERT INTO wallet(currency_id, currency_name, currency_amount, active, created_by, created_on, updated_by, updated_on) VALUES($1, $2, $3, $4, $5, NOW(), $6, NOW())', [req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, 1, req.body.UserId, req.body.UserId])
+                                                        .then(wallet => {
+
+                                                            let response = {
+                                                                success: "1",
+                                                                message: "Successfully payment done.",
+                                                            }
+                                                            res.send(response);
+
+                                                        })
+                                                        .catch(e => {
+
+                                                            let response = {
+                                                                success: "0",
+                                                                message: e.message,
+                                                            }
+                                                            res.send(response);
+                                                        });
+                                                }
+
+                                            })
+                                            .catch(e => {
+                                                let response = {
+                                                    success: 0,
+                                                    message: e.message,
+                                                }
+                                                res.send(response);
+                                            })
 
                                     })
                                     .catch(e => {
@@ -718,7 +769,59 @@ app.post('/api/payment', function (req, res) {
     //     .catch((err) => {
     //         res.send(err)       // If some error occurs
     //     });
-})
+});
+
+app.get("/api/user/GetAllWallets/:UserId", function (req, res) {
+
+    pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 ', [req.params.UserId, 1])
+        .then(data => {
+
+            if (data.rows.length > 0) {
+
+                let array = [];
+
+                for (let index = 0; index < data.rows.length; index++) {
+                    const element = data.rows[index];
+
+                    let obj = {
+                        "id": element.id,
+                        "CurrencyId": element.currency_id,
+                        "CurrencyName": element.currency_name,
+                        "CurrencyAmount": element.currency_amount,
+                        "Active": element.active,
+                        "Created_On": element.created_on
+                    };
+
+                    array.push(obj);
+
+                }
+
+                let datas = {
+                    success: "1",
+                    message: "",
+                    data: array
+                }
+                res.send(datas);
+
+            }
+            else {
+                let datas = {
+                    success: "0",
+                    message: "No records found!",
+                }
+                res.send(datas);
+            }
+
+        })
+        .catch(e => {
+            let response = {
+                success: 0,
+                message: e.message,
+            }
+            res.send(response);
+        })
+
+});
 
 function sendmail(mail, message) {
 
