@@ -869,6 +869,61 @@ app.post("/api/wallet/ActiveWallet", function (req, res) {
 
 });
 
+app.get("/api/transaction/GetCurrencyHistory/:UserId/:CurrencyId", function (req, res) {
+
+    pool.query('SELECT * FROM transaction WHERE user_id = $1 and currency_id = $2 ', [req.params.UserId, req.params.CurrencyId])
+        .then(data => {
+
+            if (data.rows.length > 0) {
+
+                let array = [];
+
+                for (let index = 0; index < data.rows.length; index++) {
+                    const element = data.rows[index];
+
+                    let obj = {
+                        "id": element.id,
+                        "CurrencyId": element.currency_id,
+                        "CurrencyName": element.currency_name,
+                        "CurrencyAmount": element.currency_amount,
+                        "Amount": element.amount,
+                        "TransactionType": element.transaction_type,
+                        "Token": element.token,
+                        "IsPaid": element.ispaid,
+                        "Created_On": element.created_on
+                    };
+
+                    array.push(obj);
+
+                }
+
+                let datas = {
+                    success: "1",
+                    message: "",
+                    data: array
+                }
+                res.send(datas);
+
+            }
+            else {
+                let datas = {
+                    success: "0",
+                    message: "No records found!",
+                }
+                res.send(datas);
+            }
+
+        })
+        .catch(e => {
+            let response = {
+                success: 0,
+                message: e.message,
+            }
+            res.send(response);
+        })
+
+});
+
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
