@@ -620,7 +620,7 @@ app.post('/api/payment', function (req, res) {
                 .then((customer) => {
 
                     stripe.charges.create({
-                        amount: req.body.Amount,    
+                        amount: req.body.Amount,
                         currency: 'INR',
                         customer: customer.id,
                         receipt_email: req.body.Email
@@ -771,7 +771,7 @@ app.post('/api/payment', function (req, res) {
     //     });
 });
 
-app.get("/api/user/GetAllWallets/:UserId", function (req, res) {
+app.get("/api/wallet/GetAllWallets/:UserId", function (req, res) {
 
     pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 ', [req.params.UserId, 1])
         .then(data => {
@@ -810,6 +810,52 @@ app.get("/api/user/GetAllWallets/:UserId", function (req, res) {
                     message: "No records found!",
                 }
                 res.send(datas);
+            }
+
+        })
+        .catch(e => {
+            let response = {
+                success: 0,
+                message: e.message,
+            }
+            res.send(response);
+        })
+
+});
+
+app.post("/api/wallet/ActiveWallet", function (req, res) {
+
+    pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 and currency_id = $3', [req.body.UserId, 1, req.body.CurrencyId])
+        .then(data => {
+
+            if (data.rows.length > 0) {
+
+                let response = {
+                    success: 0,
+                    message: "Already exits"
+                }
+                res.send(response);
+
+            }
+            else {
+                pool.query('INSERT INTO wallet(currency_id, currency_name, currency_amount, active, created_by, created_on, updated_by, updated_on) VALUES($1, $2, $3, $4, $5, NOW(), $6, NOW())', [req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, 1, req.body.UserId, req.body.UserId])
+                    .then(wallet => {
+
+                        let response = {
+                            success: "1",
+                            message: "Successfully activate wallet.",
+                        }
+                        res.send(response);
+
+                    })
+                    .catch(e => {
+
+                        let response = {
+                            success: "0",
+                            message: e.message,
+                        }
+                        res.send(response);
+                    });
             }
 
         })
