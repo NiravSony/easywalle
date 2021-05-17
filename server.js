@@ -472,12 +472,14 @@ app.get("/api/user/GetUserHistory/:UserId", function (req, res) {
 
                     let obj = {
                         "id": element.id,
-                        "user_id": element.user_id,
-                        "currency_name": element.currency_name,
-                        "currency_amount": element.currency_amount,
-                        "send_receive": element.send_receive,
-                        "currency_type": element.currency_type,
-                        "date": element.date
+                        "CurrencyId": element.currency_id,
+                        "CurrencyName": element.currency_name,
+                        "CurrencyAmount": element.currency_amount,
+                        "Amount": element.amount,
+                        "TransactionType": element.transaction_type,
+                        "Token": element.token,
+                        "IsPaid": element.ispaid,
+                        "Created_On": element.created_on
                     };
 
                     array.push(obj);
@@ -488,16 +490,6 @@ app.get("/api/user/GetUserHistory/:UserId", function (req, res) {
                     success: 1,
                     message: "",
                     data: array
-                    // data: {
-                    //     // id: data.rows[0].id,
-                    //     // first_name: data.rows[0].first_name,
-                    //     // last_name: data.rows[0].last_name,
-                    //     // email: data.rows[0].email,
-                    //     // mobile: data.rows[0].mobile,
-                    //     // password: data.rows[0].password,
-                    //     // profile_image: data.rows[0].profile_image,
-                    //     // verified: data.rows[0].verified,
-                    // }
                 }
                 res.send(datas);
 
@@ -505,7 +497,7 @@ app.get("/api/user/GetUserHistory/:UserId", function (req, res) {
             else {
                 datas = {
                     success: 0,
-                    message: "User not exits",
+                    message: "No records found!",
                 }
                 res.send(datas);
             }
@@ -921,6 +913,80 @@ app.get("/api/transaction/GetCurrencyHistory/:UserId/:CurrencyId", function (req
             }
             res.send(response);
         })
+
+});
+
+app.post("/api/transaction/SendCurrency", function (req, res) {
+
+    pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, transaction_type, token, created_by, created_on, istoken_used) VALUES($1, $2, $3, $4, $5, $6, $7, NOW(), $8)', [req.body.UserId, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, "Send", req.body.Token, req.body.UserId, 0])
+        .then(transaction => {
+
+            pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 and currency_id = $3', [req.body.UserId, 1, req.body.CurrencyId])
+                .then(wallet => {
+
+                    if (wallet.rows.length > 0) {
+
+                        let amount = parseFloat(wallet.rows[0].currency_amount) - parseFloat(req.body.CurrencyAmount);
+
+                        pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $2 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId])
+                            .then(wallet => {
+
+                                let response = {
+                                    success: "1",
+                                    message: "Successfully done.",
+                                }
+                                res.send(response);
+
+                            })
+                            .catch(e => {
+
+                                let response = {
+                                    success: "0",
+                                    message: e.message,
+                                }
+                                res.send(response);
+                            });
+
+                    }
+                    else {
+                        // pool.query('INSERT INTO wallet(currency_id, currency_name, currency_amount, active, created_by, created_on, updated_by, updated_on) VALUES($1, $2, $3, $4, $5, NOW(), $6, NOW())', [req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, 1, req.body.UserId, req.body.UserId])
+                        //     .then(wallet => {
+
+                        //         let response = {
+                        //             success: "1",
+                        //             message: "Successfully payment done.",
+                        //         }
+                        //         res.send(response);
+
+                        //     })
+                        //     .catch(e => {
+
+                        let response = {
+                            success: "0",
+                            message: "else",
+                        }
+                        res.send(response);
+                        //     });
+                    }
+
+                })
+                .catch(e => {
+                    let response = {
+                        success: 0,
+                        message: e.message,
+                    }
+                    res.send(response);
+                })
+
+        })
+        .catch(e => {
+
+            let response = {
+                success: "0",
+                message: e.message,
+            }
+            res.send(response);
+        });
 
 });
 
