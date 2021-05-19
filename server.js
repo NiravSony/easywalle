@@ -1000,15 +1000,14 @@ app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
                 let UserArray = [];
 
                 for (let index = 0; index < data.rows.length; index++) {
-                    const element = data.rows[index];
-
+                    
                     let userObj = {
-                        id: data.rows[0].id,
-                        FirstName: data.rows[0].first_name,
-                        LastName: data.rows[0].last_name,
-                        Email: data.rows[0].email,
-                        Mobile: data.rows[0].mobile,
-                        ProfileImage: data.rows[0].profile_image
+                        id: data.rows[index].id,
+                        FirstName: data.rows[index].first_name,
+                        LastName: data.rows[index].last_name,
+                        Email: data.rows[index].email,
+                        Mobile: data.rows[index].mobile,
+                        ProfileImage: data.rows[index].profile_image
                     }
 
                     UserArray.push(userObj);
