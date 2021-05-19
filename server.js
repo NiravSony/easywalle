@@ -992,7 +992,7 @@ app.post("/api/transaction/SendCurrency", function (req, res) {
 
 app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
 
-    pool.query('SELECT * FROM users ORDER BY id')
+    pool.query('SELECT * FROM users WHERE verified = 1 ORDER BY id')
         .then(data => {
 
             if (data.rows.length > 0) {
