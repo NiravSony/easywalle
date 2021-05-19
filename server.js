@@ -990,6 +990,58 @@ app.post("/api/transaction/SendCurrency", function (req, res) {
 
 });
 
+app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
+
+    pool.query('SELECT * FROM users ORDER BY id')
+        .then(data => {
+
+            if (data.rows.length > 0) {
+
+                let UserArray = [];
+
+                for (let index = 0; index < data.rows.length; index++) {
+                    const element = data.rows[index];
+
+                    let userObj = {
+                        id: data.rows[0].id,
+                        FirstName: data.rows[0].first_name,
+                        LastName: data.rows[0].last_name,
+                        Email: data.rows[0].email,
+                        Mobile: data.rows[0].mobile,
+                        ProfileImage: data.rows[0].profile_image
+                    }
+
+                    UserArray.push(userObj);
+
+                }
+
+                datas = {
+                    success: "1",
+                    message: "",
+                    data: UserArray
+                }
+                res.send(datas);
+
+            }
+            else {
+                datas = {
+                    success: 0,
+                    message: "No records found!",
+                }
+                res.send(datas);
+            }
+
+        })
+        .catch(e => {
+            let response = {
+                success: 0,
+                message: e.message,
+            }
+            res.send(response);
+        })
+
+});
+
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
