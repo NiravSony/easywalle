@@ -990,6 +990,168 @@ app.post("/api/transaction/SendCurrency", function (req, res) {
 
 });
 
+app.post("/api/transaction/SendTo", function (req, res) {
+
+    if (req.body.UserId !== req.body.SendTo) {
+
+        // pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, transaction_type, created_by, created_on) VALUES($1, $2, $3, $4, $5, $6, NOW() )', [req.body.UserId, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, "Send", req.body.UserId])
+        //     .then(transaction => {
+
+        pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 and currency_id = $3', [req.body.UserId, 1, req.body.CurrencyId])
+            .then(wallet => {
+
+                if (wallet.rows.length > 0) {
+
+                    if (wallet.rows[0].currency_amount !== "0.00") {
+
+                        pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, transaction_type, created_by, created_on) VALUES($1, $2, $3, $4, $5, $6, NOW() )', [req.body.UserId, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, "Send", req.body.UserId])
+                            .then(transaction => {
+
+                                let amount = parseFloat(wallet.rows[0].currency_amount) - parseFloat(req.body.CurrencyAmount);
+
+                                pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $2 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId])
+                                    .then(walletupdate => {
+
+                                        pool.query('INSERT INTO transaction(user_id, currency_id, currency_name, currency_amount, transaction_type, created_by, created_on) VALUES($1, $2, $3, $4, $5, $6, NOW() )', [req.body.SendTo, req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, "Receive", req.body.UserId])
+                                            .then(transaction => {
+
+                                                pool.query('SELECT * FROM wallet WHERE created_by = $1 and active = $2 and currency_id = $3', [req.body.SendTo, 1, req.body.CurrencyId])
+                                                    .then(wallet => {
+
+                                                        if (wallet.rows.length > 0) {
+
+                                                            let amount = parseFloat(wallet.rows[0].currency_amount) + parseFloat(req.body.CurrencyAmount);
+
+                                                            pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $4 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId, req.body.SendTo])
+                                                                .then(wallet => {
+
+                                                                    let response = {
+                                                                        success: "1",
+                                                                        message: "Successfully done.",
+                                                                    }
+                                                                    res.send(response);
+
+                                                                })
+                                                                .catch(e => {
+
+                                                                    let response = {
+                                                                        success: "0",
+                                                                        message: e.message,
+                                                                    }
+                                                                    res.send(response);
+                                                                });
+
+                                                        }
+                                                        else {
+                                                            pool.query('INSERT INTO wallet(currency_id, currency_name, currency_amount, active, created_by, created_on, updated_by, updated_on) VALUES($1, $2, $3, $4, $6, NOW(), $5, NOW())', [req.body.CurrencyId, req.body.CurrencyName, req.body.CurrencyAmount, 1, req.body.UserId, req.body.SendTo])
+                                                                .then(wallet => {
+
+                                                                    let response = {
+                                                                        success: "1",
+                                                                        message: "Successfully done.",
+                                                                    }
+                                                                    res.send(response);
+
+                                                                })
+                                                                .catch(e => {
+
+                                                                    let response = {
+                                                                        success: "0",
+                                                                        message: e.message,
+                                                                    }
+                                                                    res.send(response);
+                                                                });
+                                                        }
+
+                                                    })
+                                                    .catch(e => {
+                                                        let response = {
+                                                            success: "0",
+                                                            message: e.message,
+                                                        }
+                                                        res.send(response);
+                                                    })
+
+                                            })
+                                            .catch(e => {
+
+                                                let response = {
+                                                    success: "0",
+                                                    message: e.message,
+                                                }
+                                                res.send(response);
+                                            });
+
+                                    })
+                                    .catch(e => {
+
+                                        let response = {
+                                            success: "0",
+                                            message: e.message,
+                                        }
+                                        res.send(response);
+                                    });
+
+                            })
+                            .catch(e => {
+
+                                let response = {
+                                    success: "0",
+                                    message: e.message,
+                                }
+                                res.send(response);
+                            });
+
+                    }
+                    else {
+                        let response = {
+                            success: "0",
+                            message: "You are not able to sent currency",
+                        }
+                        res.send(response);
+                    }
+
+                }
+                else {
+
+                    let response = {
+                        success: "0",
+                        message: "You are not able to sent currency",
+                    }
+                    res.send(response);
+                    //     });
+                }
+
+            })
+            .catch(e => {
+                let response = {
+                    success: "0",
+                    message: e.message,
+                }
+                res.send(response);
+            })
+
+        // })
+        // .catch(e => {
+
+        //     let response = {
+        //         success: "0",
+        //         message: e.message,
+        //     }
+        //     res.send(response);
+        // });
+
+    }
+    else {
+        let response = {
+            success: "0",
+            message: "You can't sent",
+        }
+        res.send(response);
+    }
+
+});
+
 app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
 
     pool.query('SELECT * FROM users WHERE verified = $1 ORDER BY id', [1])
@@ -1000,7 +1162,7 @@ app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
                 let UserArray = [];
 
                 for (let index = 0; index < data.rows.length; index++) {
-                    
+
                     let userObj = {
                         id: data.rows[index].id,
                         FirstName: data.rows[index].first_name,
