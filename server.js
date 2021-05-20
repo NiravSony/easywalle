@@ -1203,6 +1203,40 @@ app.get("/api/user/GetAllUsers/:UserId", function (req, res) {
 
 });
 
+app.get("/api/currency/GetCurrencyDetails/:CurrencyId", function (req, res) {
+
+    pool.query('SELECT * FROM currency WHERE currency_id = $1 ORDER BY id', [req.params.CurrencyId])
+        .then(data => {
+
+            if (data.rows.length > 0) {
+
+                datas = {
+                    success: "1",
+                    message: "",
+                    data: data.rows[0]
+                }
+                res.send(datas);
+
+            }
+            else {
+                datas = {
+                    success: 0,
+                    message: "No records found!",
+                }
+                res.send(datas);
+            }
+
+        })
+        .catch(e => {
+            let response = {
+                success: 0,
+                message: e.message,
+            }
+            res.send(response);
+        })
+
+});
+
 function sendmail(mail, message) {
 
     var transporter = nodemailer.createTransport({
