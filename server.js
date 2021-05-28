@@ -1022,7 +1022,7 @@ app.post("/api/transaction/SendTo", function (req, res) {
 
                                                             let amount = parseFloat(wallet.rows[0].currency_amount) + parseFloat(req.body.CurrencyAmount);
 
-                                                            pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $4 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId, req.body.SendTo])
+                                                            pool.query('UPDATE wallet SET currency_amount = $1, updated_by = $2, updated_on = NOW() WHERE created_by = $5 and active = $3 and currency_id = $4 ', [amount, req.body.UserId, 1, req.body.CurrencyId, req.body.SendTo])
                                                                 .then(wallet => {
 
                                                                     let response = {
